@@ -24,4 +24,4 @@
 ¡Contribuciones son bienvenidas! Si tienes ideas para mejorar Smart Counter, por favor abre un issue para discutir los cambios propuestos o envía un pull request.
 
 ## Licencia
-Este proyecto está licenciado bajo [Licencia](LICENSE.md). Consulta el archivo `LICENSE.md` para más detalles.
+Este proyecto está licenciado bajo [Licencia Val Corp Enterprise](LICENSE.md). Consulta el archivo `LICENSE.md` para más detalles.
