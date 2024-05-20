@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_counter/services/services.dart';
 import 'package:smart_counter/providers/providers.dart';
+import 'package:smart_counter/widgets/top_header.dart';
 import 'package:smart_counter/widgets/widgets.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class LoginPage extends StatelessWidget {
               children: <Widget>[
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     TopWidget(),
                   ],
                 ),
@@ -33,7 +34,7 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              "Iniciar Sesión",
+              "Crear Cuenta",
               style: TextStyle(
                 fontFamily: 'Myriad',
                 fontSize: 32,
@@ -45,13 +46,12 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 ChangeNotifierProvider(
                   create: (_) => LoginFormProvider(),
-                  child: _LoginForm(),
+                  child: _RegisterForm(),
                 ),
               ],
             ),
             TextButton(
-              onPressed: () =>
-                  Navigator.pushReplacementNamed(context, 'register'),
+              onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(
                   Colors.orangeAccent.withOpacity(0.1),
@@ -64,7 +64,7 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '¿No es miembro?, ',
+                    '¿Ya tienes una cuenta?, ',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Unete',
+                    'Inicia Sesión',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class _LoginForm extends StatelessWidget {
+class _RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginForm = Provider.of<LoginFormProvider>(context);
@@ -152,12 +152,12 @@ class _LoginForm extends StatelessWidget {
                         loginForm.isLoading = true;
 
                         final String? errorMessage = await authService
-                            .loginUser(loginForm.email, loginForm.password);
+                            .createUser(loginForm.email, loginForm.password);
 
                         if (errorMessage == null) {
                           Navigator.pushReplacementNamed(context, 'home');
                         } else {
-                          NotificationsService.showSnackBarLogin(errorMessage);
+                          NotificationsService.showSnackBarSignin(errorMessage);
                           loginForm.isLoading = false;
                         }
                       },
@@ -171,7 +171,7 @@ class _LoginForm extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                   child: Text(
-                    loginForm.isLoading ? 'Espere...' : 'Ingresar',
+                    loginForm.isLoading ? 'Espere...' : 'Registrar',
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),

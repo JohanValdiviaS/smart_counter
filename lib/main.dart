@@ -1,8 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:smart_counter/pages/pages.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:smart_counter/providers/providers.dart';
+import 'package:smart_counter/services/services.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    const AppState(),
+  );
+}
+
+class AppState extends StatelessWidget {
+  const AppState({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AuthService(),
+        ),
+      ],
+      child: const MyApp(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -15,20 +41,17 @@ class MyApp extends StatelessWidget {
       initialRoute: 'login',
       debugShowCheckedModeBanner: false,
       routes: {
-        //  'checking': (context) => const CheckAuthScreen(),
-        //  'home': (context) => const HomeScreen(),
+        'home': (context) => const HomePage(),
         'login': (context) => const LoginPage(),
-        //  'product': (context) => const ProductScreen(),
-        //  'register': (context) => const RegisterScreen(),
+        'register': (context) => const RegisterPage(),
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],
         appBarTheme: const AppBarTheme(
           elevation: 0,
-          color: Colors.orangeAccent,
+          color: Color.fromRGBO(195, 151, 229, 1),
         ),
       ),
-      home: const LoginPage(),
     );
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083997311453",
+    "project_id": "smart-counter-db",
+    "storage_bucket": "smart-counter-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083997311453:android:a67ca41c076c1c05e12634",
+        "android_client_info": {
+          "package_name": "com.cristhianvaldivia.smart_counter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaOrSkq0FzxNKUej2CQ1cfl8eG2FNr7lU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
