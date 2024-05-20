@@ -1,6 +1,6 @@
 # Smart Counter
 
-Smart Counter es una aplicación de gestión financiera diseñada para ayudarte a realizar un seguimiento eficiente de tus ingresos y gastos. Ya sea que estés administrando tus finanzas personales o supervisando los gastos de un proyecto, Smart Counter te proporciona las herramientas necesarias para mantener un control preciso de tus transacciones.
+¿Buscas una forma sencilla y eficiente de mantener tus finanzas bajo control? ¡Smart Counter es la solución que necesitas! Ya sea que estés gestionando tus finanzas personales o supervisando los gastos de un proyecto, nuestra aplicación te ofrece las herramientas necesarias para un seguimiento preciso de tus ingresos y gastos. ¡Deja atrás la preocupación por las cifras y toma el control total de tus finanzas con Smart Counter!
 
 ## Características Principales
 -  Registro de Transacciones: Registra fácilmente tus ingresos y gastos en la aplicación.
