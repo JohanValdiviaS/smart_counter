@@ -1,16 +1,27 @@
-# smart_counter
+# Smart Counter
 
-A new Flutter project.
+Smart Counter es una aplicación de gestión financiera diseñada para ayudarte a realizar un seguimiento eficiente de tus ingresos y gastos. Ya sea que estés administrando tus finanzas personales o supervisando los gastos de un proyecto, Smart Counter te proporciona las herramientas necesarias para mantener un control preciso de tus transacciones.
 
-## Getting Started
+## Características Principales
+-  Registro de Transacciones: Registra fácilmente tus ingresos y gastos en la aplicación.
+-  Categorización: Organiza tus transacciones en diferentes categorías para un análisis detallado.
+-  Visualización de Datos: Accede a gráficos y estadísticas que te ayudarán a comprender tus patrones de gasto.
+-  Recordatorios Personalizables: Configura recordatorios para realizar un seguimiento de tus pagos recurrentes.
+-  Exportación de Datos: Exporta tus datos en diferentes formatos para su análisis adicional o para compartirlos con otros.
+  
+## Instalación
+-  Para empezar con Smart Counter, sigue estos pasos:
+  -  Clona el repositorio a tu máquina local:
+      git clone https://github.com/tu_usuario/smart_counter.git
+  -  Navega al directorio del proyecto:
+      cd smart_counter
+  -  Instala las dependencias necesarias:
+      npm install
+  -  Inicia la aplicación:
+      npm start
 
-This project is a starting point for a Flutter application.
+## Contribución
+¡Contribuciones son bienvenidas! Si tienes ideas para mejorar Smart Counter, por favor abre un issue para discutir los cambios propuestos o envía un pull request.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Licencia
+Este proyecto está licenciado bajo [Licencia](LICENSE.md). Consulta el archivo `LICENSE.md` para más detalles.
