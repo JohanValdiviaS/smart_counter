@@ -40,24 +40,48 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadGoalData() async {
-    DocumentSnapshot goalDoc =
-        await _firestore.collection('users').doc(_currentUser.uid).get();
-    setState(() {
-      goalAmount = goalDoc.get('goalAmount') ?? 0.0;
-      savedAmount = goalDoc.get('savedAmount') ?? 0.0;
-      goalName = goalDoc.get('goalName') ?? '';
-    });
+    try {
+      DocumentSnapshot goalDoc =
+          await _firestore.collection('users').doc(_currentUser.uid).get();
+
+      if (goalDoc.exists) {
+        setState(() {
+          goalAmount = goalDoc.get('goalAmount') ?? 0.0;
+          savedAmount = goalDoc.get('savedAmount') ?? 0.0;
+          goalName = goalDoc.get('goalName') ?? '';
+        });
+      } else {
+        // Manejar el caso cuando el documento no existe
+        print(
+            'El documento de meta no existe para el usuario $_currentUser.uid');
+      }
+    } catch (e) {
+      print('Error al cargar datos de meta: $e');
+      // Manejar la excepción según sea necesario
+    }
   }
 
   Future<void> _loadUserData() async {
-    DocumentSnapshot userDoc =
-        await _firestore.collection('users').doc(_currentUser.uid).get();
-    setState(() {
-      userMoney = userDoc.get('money') ?? 0.0;
-      goalAmount = userDoc.get('goalAmount') ?? 0.0;
-      savedAmount = userDoc.get('savedAmount') ?? 0.0;
-      goalName = userDoc.get('goalName') ?? '';
-    });
+    try {
+      DocumentSnapshot userDoc =
+          await _firestore.collection('users').doc(_currentUser.uid).get();
+
+      if (userDoc.exists) {
+        setState(() {
+          userMoney = userDoc.get('money') ?? 0.0;
+          goalAmount = userDoc.get('goalAmount') ?? 0.0;
+          savedAmount = userDoc.get('savedAmount') ?? 0.0;
+          goalName = userDoc.get('goalName') ?? '';
+        });
+      } else {
+        // Manejar el caso cuando el documento no existe
+        print(
+            'El documento de usuario no existe para el usuario $_currentUser.uid');
+      }
+    } catch (e) {
+      print('Error al cargar datos de usuario: $e');
+      // Manejar la excepción según sea necesario
+    }
   }
 
   Future<void> _loadLastExpense() async {
@@ -81,6 +105,54 @@ class _HomePageState extends State<HomePage> {
     final now = DateTime.now();
     final formatter = DateFormat('EEEE d', 'es_ES');
     return formatter.format(now);
+  }
+
+  Future<void> _initializeNewUser(User user) async {
+    try {
+      // Crear un documento para el usuario en Firestore
+      DocumentReference userDocRef =
+          _firestore.collection('users').doc(user.uid);
+
+      // Establecer los datos iniciales del usuario
+      await userDocRef.set({
+        'money': 0.0, // Inicializar el dinero en 0
+        'goalAmount': 0.0, // Inicializar la meta en 0 o un valor predeterminado
+        'savedAmount': 0.0, // Inicializar el monto ahorrado en 0
+        'goalName':
+            '', // Inicializar el nombre de la meta como una cadena vacía
+      });
+
+      // Actualizar el estado local si es necesario
+      setState(() {
+        userMoney = 0.0;
+        goalAmount = 0.0;
+        savedAmount = 0.0;
+        goalName = '';
+      });
+    } catch (e) {
+      print('Error al inicializar datos de usuario: $e');
+      // Manejar la excepción según sea necesario
+    }
+  }
+
+  void registerUser(String email, String password) async {
+    try {
+      // Crear usuario en Firebase Authentication
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Inicializar datos del usuario en Firestore
+      _initializeNewUser(userCredential.user!);
+
+      // Redirigir a la pantalla principal o realizar otras acciones necesarias
+      Navigator.pushReplacementNamed(context, 'home');
+    } catch (e) {
+      print('Error al registrar usuario: $e');
+      // Manejar la excepción según sea necesario
+    }
   }
 
   void _initializeUserData(User user) async {
