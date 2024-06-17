@@ -1,7 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:smart_counter/services/services.dart';
 import 'package:smart_counter/providers/providers.dart';
-import 'package:smart_counter/widgets/top_header.dart';
 import 'package:smart_counter/widgets/widgets.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -53,10 +54,10 @@ class RegisterPage extends StatelessWidget {
             TextButton(
               onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
               style: ButtonStyle(
-                overlayColor: MaterialStateProperty.all(
+                overlayColor: WidgetStateProperty.all(
                   Colors.orangeAccent.withOpacity(0.1),
                 ),
-                shape: MaterialStateProperty.all(
+                shape: WidgetStateProperty.all(
                   const StadiumBorder(),
                 ),
               ),

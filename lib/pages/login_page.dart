@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:smart_counter/services/services.dart';
 import 'package:smart_counter/providers/providers.dart';
@@ -53,10 +55,10 @@ class LoginPage extends StatelessWidget {
               onPressed: () =>
                   Navigator.pushReplacementNamed(context, 'register'),
               style: ButtonStyle(
-                overlayColor: MaterialStateProperty.all(
+                overlayColor: WidgetStateProperty.all(
                   Colors.orangeAccent.withOpacity(0.1),
                 ),
-                shape: MaterialStateProperty.all(
+                shape: WidgetStateProperty.all(
                   const StadiumBorder(),
                 ),
               ),

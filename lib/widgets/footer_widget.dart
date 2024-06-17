@@ -18,7 +18,7 @@ class FooterWidget extends StatelessWidget {
       child: Container(
         color: color,
         height: height,
-        alignment: Alignment.center,
+        
       ),
     );
   }

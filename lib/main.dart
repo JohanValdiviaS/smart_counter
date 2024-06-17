@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:smart_counter/pages/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:smart_counter/providers/providers.dart';
@@ -7,6 +8,7 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('es_ES', null);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -44,6 +46,8 @@ class MyApp extends StatelessWidget {
         'home': (context) => const HomePage(),
         'login': (context) => const LoginPage(),
         'register': (context) => const RegisterPage(),
+        'profile': (context) => const ProfilePage(),
+        'history': (context) => const HistoryPage(),
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],
